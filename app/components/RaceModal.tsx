@@ -1,1 +1,1 @@
-// Modal de lore da raça
+// Componente modal com lore das raças

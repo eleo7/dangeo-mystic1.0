@@ -1,1 +1,1 @@
-// Filtro de raças com busca
+// Filtro para raças por nome

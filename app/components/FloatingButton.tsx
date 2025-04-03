@@ -1,1 +1,1 @@
-// Botão flutuante animado
+// Botão flutuante para interações

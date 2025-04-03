@@ -1,1 +1,1 @@
-// Dados das 18 raças com nomes, ícones e coordenadas
+// Lista de raças com nomes, ícones e coordenadas
