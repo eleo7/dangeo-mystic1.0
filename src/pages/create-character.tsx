@@ -44,8 +44,6 @@ export default function CreateCharacter() {
       novo[key as AtributoChave] += classe.bonus[key as AtributoChave];
     }
     return novo;
-    }
-    return atributos;
   };
 
   return (
