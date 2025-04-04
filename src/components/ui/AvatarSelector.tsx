@@ -1,4 +1,5 @@
-import React from "react";
+// src/components/ui/AvatarSelector.tsx
+import React, { useState } from "react";
 
 interface AvatarSelectorProps {
   race: string;
@@ -11,20 +12,24 @@ export const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   avatarList,
   onSelect,
 }) => {
+  const [selected, setSelected] = useState<string | null>(null);
+
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">
-        Avatares disponíveis para {race}
-      </h2>
+      <h2 className="text-xl font-bold mb-2">Avatares disponíveis para {race}</h2>
       <div className="flex flex-wrap gap-4">
         {avatarList.map((url, idx) => (
           <img
             key={idx}
             src={url}
             alt={`avatar ${idx}`}
-            style={{ width: "96px", height: "96px", objectFit: "cover" }}
-            className="rounded-full cursor-pointer border-2 border-transparent hover:border-blue-500 transition"
-            onClick={() => onSelect(url)}
+            className={`w-32 h-32 rounded-full cursor-pointer border-2 transition 
+              ${selected === url ? "border-blue-600" : "border-transparent"}
+              hover:border-blue-400`}
+            onClick={() => {
+              setSelected(url);
+              onSelect(url);
+            }}
           />
         ))}
       </div>
