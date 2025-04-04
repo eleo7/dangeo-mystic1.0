@@ -29,9 +29,7 @@ export function AvatarSelector({ onSelect }: AvatarSelectorProps) {
             src={url}
             alt="avatar"
             onClick={() => handleSelect(url)}
-            className={`w-20 h-20 rounded-full border-4 cursor-pointer ${
-              selected === url ? "border-blue-600" : "border-transparent"
-            }`}
+            className={\`w-20 h-20 rounded-full border-4 cursor-pointer \${selected === url ? "border-blue-600" : "border-transparent"}\`}
           />
         ))}
       </div>
