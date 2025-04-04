@@ -11,26 +11,22 @@ export const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   avatarList,
   onSelect,
 }) => {
-  const [selected, setSelected] = useState<string | null>(null);
-
   return (
-    <div className="text-center">
+    <div>
       <h2 className="text-xl font-bold mb-4">Escolha seu avatar - {race}</h2>
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap gap-6">
         {avatarList.map((url, idx) => (
-          <div key={idx} className="flex flex-col items-center space-y-1">
+          <div
+            key={idx}
+            className="flex flex-col items-center cursor-pointer transition-transform duration-200 hover:scale-105 hover:brightness-110"
+            onClick={() => onSelect(url)}
+          >
             <img
-  src={url}
-  alt={`Avatar ${idx + 1}`}
-  style={{ width: "64px", height: "64px", objectFit: "cover", borderRadius: "9999px" }}
-  className={`cursor-pointer border-2 transition 
-    ${selected === url ? "border-blue-600" : "border-gray-300"} hover:border-blue-400`}
-  onClick={() => {
-    setSelected(url);
-    onSelect(url);
-  }}
-/>
-            <span className="text-xs text-gray-700">Avatar {idx + 1}</span>
+              src={url}
+              alt={`avatar ${idx + 1}`}
+              className="w-20 h-20 rounded-full border-2 border-transparent hover:border-blue-500 shadow-md"
+            />
+            <span className="mt-1 text-sm text-center">Avatar {idx + 1}</span>
           </div>
         ))}
       </div>
