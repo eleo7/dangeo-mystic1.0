@@ -1,6 +1,6 @@
 export const races = [
   {
-    name: "Aspectos 🌿",
+    name: "Aspectos",
     description: "Mestres Elementais – Seres que controlam os elementos da natureza: fogo, água, ar e terra.",
   },
   {
