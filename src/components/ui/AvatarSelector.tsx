@@ -36,7 +36,15 @@ export const AvatarSelector: React.FC<AvatarSelectorProps> = ({
                 onSelect(url);
               }}
             />
-            <span className="text-xs text-gray-700">Avatar {idx + 1}</span>
+            <span
+              className={`text-xs ${
+                selected === url
+                  ? "text-blue-600 font-semibold"
+                  : "text-gray-700"
+              }`}
+            >
+              Avatar {idx + 1}
+            </span>
           </div>
         ))}
       </div>
