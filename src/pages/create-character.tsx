@@ -1,9 +1,8 @@
+"use client";
 import React, { useState } from 'react';
-
 import { races } from '../data/races';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
-
 
 const classes = [
   { name: 'Guerreiro', bonus: { forca: 1 } },
@@ -21,10 +20,12 @@ const atributosBase = {
   vitalidade: 0,
 };
 
+type AtributoChave = keyof typeof atributosBase;
+
 export default function CreateCharacter() {
   const [etapa, setEtapa] = useState(1);
-  const [race, setRace] = useState(null);
-  const [classe, setClasse] = useState(null);
+  const [race, setRace] = useState<any>(null);
+  const [classe, setClasse] = useState<any>(null);
   const [atributos, setAtributos] = useState({ ...atributosBase });
   const [pontos, setPontos] = useState(10);
   const [nome, setNome] = useState('');
@@ -39,7 +40,7 @@ export default function CreateCharacter() {
     setEtapa(3);
   };
 
-  const alterarAtributo = (key: string, valor: number) => {
+  const alterarAtributo = (key: AtributoChave, valor: number) => {
     if (pontos - valor < 0 || atributos[key] + valor < 0) return;
     setAtributos({ ...atributos, [key]: atributos[key] + valor });
     setPontos(pontos - valor);
@@ -88,9 +89,9 @@ export default function CreateCharacter() {
               <div key={key} className="flex justify-between items-center border p-2 rounded">
                 <span className="capitalize">{key}</span>
                 <div className="flex gap-2">
-                  <Button onClick={() => alterarAtributo(key, -1)}>-</Button>
-                  <span>{atributos[key]}</span>
-                  <Button onClick={() => alterarAtributo(key, 1)}>+</Button>
+                  <Button onClick={() => alterarAtributo(key as AtributoChave, -1)}>-</Button>
+                  <span>{atributos[key as AtributoChave]}</span>
+                  <Button onClick={() => alterarAtributo(key as AtributoChave, 1)}>+</Button>
                 </div>
               </div>
             ))}
@@ -122,7 +123,7 @@ export default function CreateCharacter() {
           <p><strong>Atributos:</strong></p>
           <ul className="list-disc pl-6">
             {Object.entries(atributos).map(([key, val]) => (
-              <li key={key}>{key}: {val + (classe?.bonus[key] || 0)}</li>
+              <li key={key}>{key}: {val + (classe?.bonus[key as AtributoChave] || 0)}</li>
             ))}
           </ul>
           <p className="mt-4"><strong>Descrição da raça:</strong> {race?.description}</p>
