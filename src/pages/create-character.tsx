@@ -39,11 +39,12 @@ export default function CreateCharacter() {
   const aplicarBonusClasse = () => {
     if (!classe || !classe.bonus) return atributos;
   
-    const bonus = classe.bonus;
+    const bonus = classe.bonus as Record<AtributoChave, number>;
     const novo = { ...atributos };
   
     for (const key in bonus) {
-      novo[key as AtributoChave] += bonus[key as AtributoChave];
+      const k = key as AtributoChave;
+      novo[k] += bonus[k];
     }
   
     return novo;
