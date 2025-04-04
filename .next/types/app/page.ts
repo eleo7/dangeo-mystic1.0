@@ -1,4 +1,4 @@
-// File: C:\Users\leonardo.neres\Downloads\Nova pasta (5)\app\page.tsx
+// File: C:\Users\leo\Documents\GitHub\dangeo-mystic1.0\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
