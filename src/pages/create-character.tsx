@@ -106,17 +106,16 @@ export default function CreateCharacter() {
         </>
       )}
 
-{etapa === 4 && race && (
+{etapa === 4 && race && avatarMap[race] && (
   <>
     <AvatarSelector
       race={race}
-      avatarList={avatarMap[race] || []}
+      avatarList={avatarMap[race]}
       onSelect={(url) => setAvatarUrl(url)}
     />
     <Button onClick={() => setEtapa(5)} className="mt-4">Continuar</Button>
   </>
 )}
-
       {etapa === 5 && (
         <>
           <h1 className="text-2xl font-bold">Escolha um nome</h1>
