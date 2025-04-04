@@ -6,11 +6,20 @@ import { Card, CardContent } from "../components/ui/card";
 import { AvatarSelector } from "../components/ui/AvatarSelector";
 
 const classes = [
-  { name: "Guerreiro", bonus: { forca: 1 } },
-  { name: "Mago", bonus: { inteligencia: 1 } },
-  { name: "Arqueiro", bonus: { destreza: 1 } },
-  { name: "Paladino", bonus: { vitalidade: 1 } },
+  {
+    name: "Guerreiro",
+    bonus: { forca: 1, destreza: 0, inteligencia: 0, vitalidade: 0 },
+  },
+  {
+    name: "Mago",
+    bonus: { forca: 0, destreza: 0, inteligencia: 1, vitalidade: 0 },
+  },
+  {
+    name: "Arqueiro",
+    bonus: { forca: 0, destreza: 1, inteligencia: 0, vitalidade: 0 },
+  },
 ];
+
 
 const atributosBase = {
   forca: 0,
