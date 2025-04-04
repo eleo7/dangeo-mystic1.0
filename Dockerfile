@@ -1,22 +1,23 @@
-# Dockerfile custom para Dangeo Mystic (Next.js)
+# Usa uma imagem base oficial com Node.js
+FROM node:18-alpine
 
-# Etapa 1: imagem base com Node.js
-FROM node:18
-
-# Diretório de trabalho dentro do container
+# Define o diretório de trabalho
 WORKDIR /app
 
-# Copia arquivos do projeto
+# Copia os arquivos do projeto
 COPY . .
 
 # Instala as dependências do projeto
 RUN npm install
 
-# Executa o build com Next.js (usando npx para evitar erros de permissão)
-RUN npx next build
+# Corrige permissão do binário do Next.js
+RUN chmod +x node_modules/.bin/next
 
-# Expõe a porta padrão da aplicação
+# Executa o build do Next.js
+RUN npm run build
+
+# Expõe a porta usada pela aplicação
 EXPOSE 3000
 
-# Comando para iniciar a aplicação
-CMD ["npx", "next", "start"]
+# Comando de inicialização
+CMD ["npm", "start"]
