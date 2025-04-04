@@ -1,4 +1,3 @@
-// src/components/ui/AvatarSelector.tsx
 import React, { useState } from "react";
 
 interface AvatarSelectorProps {
@@ -17,13 +16,13 @@ export const AvatarSelector: React.FC<AvatarSelectorProps> = ({
   return (
     <div>
       <h2 className="text-xl font-bold mb-2">Avatares disponíveis para {race}</h2>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-3">
         {avatarList.map((url, idx) => (
           <img
             key={idx}
             src={url}
             alt={`avatar ${idx}`}
-            className={`w-32 h-32 rounded-full cursor-pointer border-2 transition 
+            className={`w-20 h-20 object-cover rounded-full cursor-pointer border-2 transition
               ${selected === url ? "border-blue-600" : "border-transparent"}
               hover:border-blue-400`}
             onClick={() => {
