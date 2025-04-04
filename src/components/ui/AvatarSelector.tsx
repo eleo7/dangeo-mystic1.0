@@ -1,40 +1,25 @@
-"use client";
-import { useState } from "react";
-
-type AvatarSelectorProps = {
+// src/components/ui/AvatarSelector.tsx
+interface AvatarSelectorProps {
+  race: string;
+  avatarList: string[];
   onSelect: (url: string) => void;
-};
+}
 
-const avatarList = [
-  "/avatars/avatar1.png",
-  "/avatars/avatar2.png",
-  "/avatars/avatar3.png",
-];
-
-export function AvatarSelector({ onSelect }: AvatarSelectorProps) {
-  const [selected, setSelected] = useState<string | null>(null);
-
-  const handleSelect = (url: string) => {
-    setSelected(url);
-    onSelect(url);
-  };
-
+export const AvatarSelector: React.FC<AvatarSelectorProps> = ({ race, avatarList, onSelect }) => {
   return (
     <div>
-      <h2 className="text-xl font-bold mb-2">Escolha seu avatar</h2>
+      <h2 className="text-xl font-bold mb-2">Avatares disponíveis para {race}</h2>
       <div className="flex flex-wrap gap-4">
-        {avatarList.map((url) => (
+        {avatarList.map((url, idx) => (
           <img
-            key={url}
+            key={idx}
             src={url}
-            alt="avatar"
-            onClick={() => handleSelect(url)}
-            className={`w-20 h-20 rounded-full border-4 cursor-pointer ${
-              selected === url ? "border-blue-600" : "border-transparent"
-            }`}
+            alt={`avatar ${idx}`}
+            className="w-24 h-24 rounded-full cursor-pointer border-2 border-transparent hover:border-blue-500"
+            onClick={() => onSelect(url)}
           />
         ))}
       </div>
     </div>
   );
-}
+};

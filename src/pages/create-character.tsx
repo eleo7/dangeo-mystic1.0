@@ -4,6 +4,7 @@ import { races } from "../data/races";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { AvatarSelector } from "../components/ui/AvatarSelector";
+import { avatarMap } from "../data/avatarMap";
 
 const classes = [
   {
@@ -105,12 +106,16 @@ export default function CreateCharacter() {
         </>
       )}
 
-      {etapa === 4 && (
-        <>
-          <AvatarSelector onSelect={(url) => setAvatarUrl(url)} />
-          <Button onClick={() => setEtapa(5)} className="mt-4">Continuar</Button>
-        </>
-      )}
+{etapa === 4 && race && (
+  <>
+    <AvatarSelector
+      race={race}
+      avatarList={avatarMap[race] || []}
+      onSelect={(url) => setAvatarUrl(url)}
+    />
+    <Button onClick={() => setEtapa(5)} className="mt-4">Continuar</Button>
+  </>
+)}
 
       {etapa === 5 && (
         <>
